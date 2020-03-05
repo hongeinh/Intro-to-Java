@@ -1,5 +1,5 @@
 # HW:
 My first ever Java(and also coding) Homework
 
-#honganh.notepad
+# honganh.notepad:
 Notepad application 
