@@ -27,20 +27,24 @@ public class Media {
 	public void setMediaId(String mediaId) {
 		this.mediaId = mediaId;
 	}
-	public Media(String title) {
+	public String getMediaId() {
+		return mediaId;
+	}
+	Media(String title) {
 		this.title = title;
 		nbMediaUsed++;
 		setMediaId("MDI" + Integer.toString(nbMediaUsed));
 	}
-	public Media(String title, String category) {
+	Media(String title, String category) {
 		this(title);
 		this.category = category;
 	}
-	public Media(String title, String category, float cost) {
+	Media(String title, String category, float cost) {
 		this(title, category);
 		this.cost = cost;
 	}
-	public String getMediaId() {
-		return mediaId;
+	
+	public static Media createMedia(String title, String category, float cost) {
+		return new Media(title, category, cost);
 	}
 }

@@ -75,6 +75,7 @@ public class Order {
 		for (int i = 0; i < sz; i++) {
 			if (itemsOrdered.get(i).getMediaId().equals(id)) {
 				itemsOrdered.remove(i);
+				System.out.println("Item of id: " + id + " removed successfully!");
 				return;
 			}
 		}
@@ -92,13 +93,13 @@ public class Order {
 				"--------------------------------------------------------------------------------------------------------------------");
 		int sz = itemsOrdered.size();
 		for (int i = 0; i < sz; i++) {
-			System.out.format("%-5d%-20s%-40s | %-20s | %-10f\n", i + 1, itemsOrdered.get(i).getMediaId(),
+			System.out.format("%-5d%-20s%-40s | %-20s | %-10.2f\n", i + 1, itemsOrdered.get(i).getMediaId(),
 					itemsOrdered.get(i).getTitle(), itemsOrdered.get(i).getCategory(), itemsOrdered.get(i).getCost());
 		}
 		System.out.println("Lucky Item: ");
 		DigitalVideoDisc lucky = Order.getALuckyItem();
-		System.out.format("%-5d%-20s%-40s | %-20s |%-20s | %-10d| %-20.2f\n", 0, "", lucky.getTitle(),
-				lucky.getCategory(), lucky.getDirector(), lucky.getLength(), lucky.getCost());
+		System.out.format("%-5d%-20s%-40s | %-20s | %-10.2f | %-20s | %-20s\n", 0, "", lucky.getTitle(),
+				lucky.getCategory(), lucky.getCost(), lucky.getDirector(), lucky.getLength());
 		System.out.println("Total items in order: " + sz);
 		System.out.println("Total cost: " + totalCost());
 	}

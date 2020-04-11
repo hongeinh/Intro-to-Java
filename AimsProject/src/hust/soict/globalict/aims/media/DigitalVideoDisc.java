@@ -19,18 +19,17 @@ public class DigitalVideoDisc extends Media{
 		this.length = length;
 	}
 	
-	public DigitalVideoDisc(String title, String category, String director ){
+	DigitalVideoDisc(String title, String category, String director ){
 		super(title, category);
 		this.director = director;
 	}
-	public DigitalVideoDisc(String title, String category, float cost) {
+	DigitalVideoDisc(String title, String category, float cost) {
 		super(title, category, cost);
 	}
-	public DigitalVideoDisc(String title, String category, String director, int length, float cost){
+	DigitalVideoDisc(String title, String category, String director, int length, float cost){
 		this(title, category, cost);
 		this.director = director;
 		this.length = length;
-		
 	}
 
 	/**
@@ -50,5 +49,9 @@ public class DigitalVideoDisc extends Media{
 			}
 		}
 		return isFound;
+	}
+	
+	public static Media createMedia(String title, String category, float cost) {
+		return new DigitalVideoDisc(title, category, cost);
 	}
 }

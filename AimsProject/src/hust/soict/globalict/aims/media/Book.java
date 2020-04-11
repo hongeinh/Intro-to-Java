@@ -20,25 +20,29 @@ public class Book extends Media {
 		return isFound;
 	}
 
-	public Book(String title) {
+	Book(String title) {
 		super(title);
 	}
-	public Book(String title, String category) {
+	Book(String title, String category) {
 		super(title, category);
 	}
-	public Book(String title, String category, float cost) {
+	Book(String title, String category, float cost) {
 		super(title, category, cost);
 	}
 	
-	public Book(String title, String category, List<String> authors) {
+	Book(String title, String category, List<String> authors) {
 		super(title, category);
 		int sz = authors.size();
 		for(int i = 0; i < sz; i++) {
-			this.authors = addAuthor(authors.get(i));
+			addAuthor(authors.get(i));
 		}
 	}
 	
-	public List<String> addAuthor(String authorName) {
+	
+	public static Media createMedia(String title, String category, float cost) {
+		return new Book(title, category, cost);
+	}
+	public void addAuthor(String authorName) {
 		int isFound = findAuthor(authorName);
 		if (isFound == -1) {
 			authors.add(authorName.trim());
@@ -46,18 +50,14 @@ public class Book extends Media {
 		} else {
 			System.out.println("Author " + authorName + " already exists in author list");
 		}
-		return authors;
 	}
 	
-	
-
-	public List<String> removeAuthor(String authorName) {
+	public void removeAuthor(String authorName) {
 		int isFound = findAuthor(authorName);
 		if (isFound == -1) {
 			System.out.println("Can not find author " + authorName);
 		} else {
 			authors.remove(isFound);
 		}
-		return authors;
 	}
 }

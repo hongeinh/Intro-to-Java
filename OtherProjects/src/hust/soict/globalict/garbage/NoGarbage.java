@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class NoGarbage {
 	public static void main(String[] args) {
 		StringBuffer helu = new StringBuffer();
-		Path path = Paths.get("\\OOLT.20192\\OtherProjects\\src\\hust\\soict\\globalict\\garbage\\LoremIpsum.txt");
+		Path path = Paths.get("LoremIpsum.txt");
 		File file = new File(path.toString());
 		try {
 			Scanner sc = new Scanner(file);

@@ -1,5 +1,6 @@
 package hust.soict.globalict.test.disc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.Media;
 
 /**
  * @author Nguyen Thi Hong Anh
@@ -7,8 +8,8 @@ import hust.soict.globalict.aims.media.DigitalVideoDisc;
 
 public class TessPassingParameter {
 	public static void main(String[] args) {
-		DigitalVideoDisc jungleDVD = new DigitalVideoDisc("Jungle", "animation", 0.0f);
-		DigitalVideoDisc cinderellaDVD = new DigitalVideoDisc("Cinderella", "animation", 0.0f);
+		Media jungleDVD = DigitalVideoDisc.createMedia("Jungle", "animation", 0.0f);
+		Media cinderellaDVD = DigitalVideoDisc.createMedia("Cinderella", "animation", 0.0f);
 
 		swap(jungleDVD, cinderellaDVD);
 		System.out.println("Jungle DVD title: " + jungleDVD.getTitle());
@@ -19,32 +20,32 @@ public class TessPassingParameter {
 
 	}
 
-	private static void changeTitle(DigitalVideoDisc dvd, String title) {
+	private static void changeTitle(Media dvd, String title) {
 		// TODO Auto-generated method stub
 		String oldTitle = dvd.getTitle();
 		dvd.setTitle(title);
-		dvd = new DigitalVideoDisc(oldTitle, "animation", 0.0f);
+		dvd = DigitalVideoDisc.createMedia(oldTitle, "animation", 0.0f);
 	}
 
-	private static void swap(DigitalVideoDisc obj1, DigitalVideoDisc obj2) {
+	private static void swap(Media obj1, Media obj2) {
 		// TODO Auto-generated method stub
 		String title = obj1.getTitle();
-		String director = obj1.getDirector();
+		String director = ((DigitalVideoDisc) obj1).getDirector();
 		String category = obj1.getCategory();
-		int length = obj1.getLength();
+		int length = ((DigitalVideoDisc) obj1).getLength();
 		float cost = obj1.getCost();
 		
 		obj1.setTitle(obj2.getTitle()); 
 		obj1.setCategory(obj2.getCategory());
-		obj1.setDirector(obj2.getDirector());
+		((DigitalVideoDisc) obj1).setDirector(((DigitalVideoDisc) obj2).getDirector());
 		obj1.setCost(obj2.getCost());
-		obj1.setLength(obj2.getLength());
+		((DigitalVideoDisc) obj1).setLength(((DigitalVideoDisc) obj2).getLength());
 		
 		obj2.setTitle(title); 
 		obj2.setCategory(category);
-		obj2.setDirector(director);
+		((DigitalVideoDisc) obj2).setDirector(director);
 		obj2.setCost(cost);
-		obj2.setLength(length);
+		((DigitalVideoDisc) obj2).setLength(length);
 		
 	}
 }

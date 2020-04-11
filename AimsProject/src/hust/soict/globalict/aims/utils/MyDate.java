@@ -214,6 +214,7 @@ public class MyDate {
 	public static String accept() {
 		Scanner sc = new Scanner(System.in);
 		String input = sc.nextLine();
+		sc.close();
 		return input;
 	}
 

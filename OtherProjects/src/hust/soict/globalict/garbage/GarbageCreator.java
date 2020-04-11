@@ -9,7 +9,8 @@ import java.util.Scanner;
 public class GarbageCreator {
 	public static void main(String[] args) {
 		String helu = "";
-		Path path = Paths.get("\\OOLT.20192\\OtherProjects\\src\\hust\\soict\\globalict\\garbage\\LoremIpsum.txt");
+		//Path path = Paths.get("test.txt");
+		Path path = Paths.get("LoremIpsum.txt");
 		File file = new File(path.toString());
 		try {
 			Scanner sc = new Scanner(file);
@@ -25,6 +26,12 @@ public class GarbageCreator {
 		}
 		
 		System.out.println("Done");
-		
+//		Random rand = new Random(600);
+//		long start = System.currentTimeMillis();
+//		String helu = "Hong Einh is cute times ";
+//		for(int i = 0; i < Integer.MAX_VALUE; i++) {
+//			helu = helu + rand.nextInt(2);
+//		}
+//		System.out.println(System.currentTimeMillis() - start);
 	}
 }

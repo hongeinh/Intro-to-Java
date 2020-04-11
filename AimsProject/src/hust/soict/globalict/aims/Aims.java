@@ -83,10 +83,10 @@ public class Aims {
 				cost = Float.parseFloat(costS);
 				media = media.toLowerCase().trim();
 				if(media.equals("book")) {
-					orderList.get(orderList.size() - 1).addMedia(new Book(title.trim(), category.trim(), cost));
+					orderList.get(orderList.size() - 1).addMedia(Book.createMedia(title.trim(), category.trim(), cost));
 				}
 				else if(media.contentEquals("digital video disc")) {
-					orderList.get(orderList.size() - 1).addMedia(new DigitalVideoDisc(title.trim(), category.trim(), cost));
+					orderList.get(orderList.size() - 1).addMedia(DigitalVideoDisc.createMedia(title.trim(), category.trim(), cost));
 				}
 				break;
 			case "3":
