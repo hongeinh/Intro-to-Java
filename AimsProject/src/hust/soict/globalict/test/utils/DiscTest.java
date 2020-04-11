@@ -1,13 +1,16 @@
 package hust.soict.globalict.test.utils;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-import hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.order.Order;
 
 public class DiscTest {
 
 	public static void main(String[] args) {
+		Order anOrder = Order.createOrder();
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 8, 19.95f);
 
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 124, 24.95f);
@@ -31,28 +34,35 @@ public class DiscTest {
 
 		DigitalVideoDisc dvd11 = new DigitalVideoDisc("Kiki's Delivery service", "Animation", "Hayao Miyazaki", 85,
 				11.25f);
-		
-		DigitalVideoDisc [] dvdList = {dvd1, dvd2, dvd3, dvd4, dvd5, dvd6, dvd7, dvd8, dvd9, dvd10, dvd11};
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter title to search: ");
-		String title = sc.nextLine();
+
+		DigitalVideoDisc[] ghibliList = { dvd5, dvd6, dvd7, dvd8, dvd9, dvd10, dvd11 };
+		if (anOrder == null) {
+			System.out.println("Can not add more order!\nMaximum number of orders allowed reached!\n");
+		} else {
+			anOrder.addMedia(dvd1);
+			anOrder.addMedia(dvd2);
+			anOrder.addMedia(dvd3);
+			anOrder.addMedia(dvd4);
+			anOrder.addMedia(ghibliList);
+
+			anOrder.displayOrder();
+		}
 		
 		boolean isFound = false;
 		
-		for(DigitalVideoDisc d: dvdList) {
-			isFound = d.search(title);
-			if(isFound == true) {
-				System.out.println("Sis we have yo DVD!");
+		Scanner sc = new Scanner(System.in);
+		System.out.print("\n\nEnter title to search: ");
+		String title = sc.nextLine();
+		ArrayList<Media> dvdList = anOrder.getItemsOrdered();
+		for(Media d: dvdList) {
+			if(d.getTitle().contentEquals(title)) {
+				System.out.println("Sis we have yo thang!");
 				break;
 			}
 		}
 		if(isFound == false) {
-			System.out.println("No DVD of dat title found sorry");
+			System.out.println("No thang of dat title found sorry");
 		}
-		
-		System.out.println("Hey babe you will get a free item <3");
-		DigitalVideoDisc freeItem = Order.getALuckyItem();
-		System.out.println(freeItem.getTitle() + " by " + freeItem.getDirector());
 		sc.close();
 	}
 }

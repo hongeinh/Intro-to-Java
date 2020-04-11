@@ -1,7 +1,10 @@
 package hust.soict.globalict.aims.order;
 
-import hust.soict.globalict.aims.disc.DigitalVideoDisc;
-import hust.soict.globalict.aims.disc.LuckyItems;
+import java.util.ArrayList;
+
+import hust.soict.globalict.aims.media.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.LuckyItems;
+import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.utils.MyDate;
 
 /**
@@ -10,14 +13,31 @@ import hust.soict.globalict.aims.utils.MyDate;
 
 public class Order {
 	public static final int MAX_NUMBER_ORDERED = 10;
-	private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBER_ORDERED];
-	private int qtyOrdered = 0;
 	private MyDate dateOrdered;
 	public static final int MAX_LIMITED_ORDERS = 5;
 	private static int nbOrders = 0;
+	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+	private String orderId;
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
+	public ArrayList<Media> getItemsOrdered() {
+		return itemsOrdered;
+	}
+
+	public void setItemsOrdered(ArrayList<Media> itemsOrdered) {
+		this.itemsOrdered = itemsOrdered;
+	}
 
 	private Order() {
 		dateOrdered = new MyDate();
+		setOrderId("OD" + Integer.toString(nbOrders));
 		nbOrders++;
 	}
 
@@ -29,60 +49,36 @@ public class Order {
 		}
 	}
 
-	public int findDigitalVideoDisc(DigitalVideoDisc disc, int qty) {
-
-		for (int i = 0; i < qty; i++) {
-			if (itemsOrdered[i].equals(disc)) {
-				return i;
-			}
-		}
-		return -1;
-	}
-
-	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
-
-		if (qtyOrdered < MAX_NUMBER_ORDERED) {
-			itemsOrdered[qtyOrdered] = disc;
-			qtyOrdered++;
-			System.out.println("DVD " + disc.getTitle() + " added to order successfully!");
-		} else if (qtyOrdered == MAX_NUMBER_ORDERED) {
-			System.out.println("-----> Max number of items reached!\nCannot add DVD " + disc.getTitle() + " to order!");
-		}
-	}
-
-	public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
-		addDigitalVideoDisc(dvd1);
-		addDigitalVideoDisc(dvd2);
-	}
-
-	public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
-		int sze = dvdList.length;
-		for (int i = 0; i < sze; i++) {
-			addDigitalVideoDisc(dvdList[i]);
-		}
-	}
-
-	/*
-	 * When try to add addDigitalVideoDisc method, it causes error because we
-	 * already have similar method public void addDigitalVideoDisc1(DigitalVideoDisc
-	 * ...disc) {
-	 * 
-	 * }
-	 */
-
-	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
-		int dvdIsInOrder = findDigitalVideoDisc(disc, qtyOrdered);
-		if (qtyOrdered <= 0) {
-			System.out.println("-----> Order is empty!\nCannot remove DVD " + disc.getTitle());
-		} else if (dvdIsInOrder == -1) {
-			System.out.println("-----> DVD is not in the order! Cannot remove DVD " + disc.getTitle());
+	public void addMedia(Media m) {
+		if (itemsOrdered.size() < MAX_NUMBER_ORDERED) {
+			itemsOrdered.add(m);
+			System.out.println(m.getTitle() + " of ID: " + m.getMediaId() + " added succesfully!");
 		} else {
-			for (int i = dvdIsInOrder; i < qtyOrdered - 1; i++) {
-				itemsOrdered[i] = itemsOrdered[i + 1];
-			}
-			qtyOrdered--;
-			System.out.println("DVD " + disc.getTitle() + " removed successfully!");
+			System.out.println("Can not add " + m.getTitle() + " to the order!\nMax number of items reached");
 		}
+	}
+
+	public void addMedia(Media m1, Media m2) {
+		addMedia(m1);
+		addMedia(m2);
+	}
+
+	public void addMedia(Media[] mediaList) {
+		int sz = mediaList.length;
+		for (int i = 0; i < sz; i++) {
+			addMedia(mediaList[i]);
+		}
+	}
+
+	public void removeMedia(String id) {
+		int sz = itemsOrdered.size();
+		for (int i = 0; i < sz; i++) {
+			if (itemsOrdered.get(i).getMediaId().equals(id)) {
+				itemsOrdered.remove(i);
+				return;
+			}
+		}
+		System.out.println("Can not find media " + id + "\nRemoval unsuccess.");
 	}
 
 	public void displayOrder() {
@@ -90,24 +86,28 @@ public class Order {
 				"-------------------------------------------------------ORDERS-------------------------------------------------------");
 		System.out.print("Date created: ");
 		dateOrdered.print();
-		System.out.format("%-5s%-40s | %-20s | %-20s |%-10s |%-20s\n", "No", "Title", "Category", "Director", "Length",
-				"Cost");
+		System.out.println("Order's ID: " + getOrderId());
+		System.out.format("%-5s%-20s%-40s | %-20s | %-10s\n", "No.", "ID", "Title", "Category", "Cost");
 		System.out.println(
 				"--------------------------------------------------------------------------------------------------------------------");
-
-		for (int i = 0; i < qtyOrdered; i++) {
-			System.out.format("%-5d%-40s | %-20s |%-20s | %-10d| %-20.2f\n", i + 1, itemsOrdered[i].getTitle(),
-					itemsOrdered[i].getCategory(), itemsOrdered[i].getDirector(), itemsOrdered[i].getLength(),
-					itemsOrdered[i].getCost());
+		int sz = itemsOrdered.size();
+		for (int i = 0; i < sz; i++) {
+			System.out.format("%-5d%-20s%-40s | %-20s | %-10f\n", i + 1, itemsOrdered.get(i).getMediaId(),
+					itemsOrdered.get(i).getTitle(), itemsOrdered.get(i).getCategory(), itemsOrdered.get(i).getCost());
 		}
-		System.out.println("Total items in order: " + qtyOrdered);
+		System.out.println("Lucky Item: ");
+		DigitalVideoDisc lucky = Order.getALuckyItem();
+		System.out.format("%-5d%-20s%-40s | %-20s |%-20s | %-10d| %-20.2f\n", 0, "", lucky.getTitle(),
+				lucky.getCategory(), lucky.getDirector(), lucky.getLength(), lucky.getCost());
+		System.out.println("Total items in order: " + sz);
 		System.out.println("Total cost: " + totalCost());
 	}
 
 	public float totalCost() {
 		float sum = 0.0f;
-		for (int i = 0; i < qtyOrdered; i++) {
-			sum += itemsOrdered[i].getCost();
+		int sz = itemsOrdered.size();
+		for (int i = 0; i < sz; i++) {
+			sum += itemsOrdered.get(i).getCost();
 		}
 		return sum;
 	}
@@ -119,7 +119,7 @@ public class Order {
 	public static DigitalVideoDisc getALuckyItem() {
 		LuckyItems li = new LuckyItems();
 		int sz = li.getItemsSize();
-		int rand = (int) (Math.random()*100) % sz;
+		int rand = (int) (Math.random() * 100) % sz;
 		return li.getLuckyDisc(rand);
 	}
 }

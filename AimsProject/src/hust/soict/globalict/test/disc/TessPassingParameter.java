@@ -1,5 +1,5 @@
 package hust.soict.globalict.test.disc;
-import hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.DigitalVideoDisc;
 
 /**
  * @author Nguyen Thi Hong Anh
@@ -7,8 +7,8 @@ import hust.soict.globalict.aims.disc.DigitalVideoDisc;
 
 public class TessPassingParameter {
 	public static void main(String[] args) {
-		DigitalVideoDisc jungleDVD = new DigitalVideoDisc("Jungle");
-		DigitalVideoDisc cinderellaDVD = new DigitalVideoDisc("Cinderella");
+		DigitalVideoDisc jungleDVD = new DigitalVideoDisc("Jungle", "animation", 0.0f);
+		DigitalVideoDisc cinderellaDVD = new DigitalVideoDisc("Cinderella", "animation", 0.0f);
 
 		swap(jungleDVD, cinderellaDVD);
 		System.out.println("Jungle DVD title: " + jungleDVD.getTitle());
@@ -23,7 +23,7 @@ public class TessPassingParameter {
 		// TODO Auto-generated method stub
 		String oldTitle = dvd.getTitle();
 		dvd.setTitle(title);
-		dvd = new DigitalVideoDisc(oldTitle);
+		dvd = new DigitalVideoDisc(oldTitle, "animation", 0.0f);
 	}
 
 	private static void swap(DigitalVideoDisc obj1, DigitalVideoDisc obj2) {
