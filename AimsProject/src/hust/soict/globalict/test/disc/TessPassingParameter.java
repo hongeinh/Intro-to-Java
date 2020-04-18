@@ -8,8 +8,8 @@ import hust.soict.globalict.aims.media.Media;
 
 public class TessPassingParameter {
 	public static void main(String[] args) {
-		Media jungleDVD = DigitalVideoDisc.createMedia("Jungle", "animation", 0.0f);
-		Media cinderellaDVD = DigitalVideoDisc.createMedia("Cinderella", "animation", 0.0f);
+		Media jungleDVD = new DigitalVideoDisc("Jungle", "animation", 0.0f);
+		Media cinderellaDVD = new DigitalVideoDisc("Cinderella", "animation", 0.0f);
 
 		swap(jungleDVD, cinderellaDVD);
 		System.out.println("Jungle DVD title: " + jungleDVD.getTitle());
@@ -23,8 +23,8 @@ public class TessPassingParameter {
 	private static void changeTitle(Media dvd, String title) {
 		// TODO Auto-generated method stub
 		String oldTitle = dvd.getTitle();
-		dvd.setTitle(title);
-		dvd = DigitalVideoDisc.createMedia(oldTitle, "animation", 0.0f);
+		//dvd.setTitle(title);
+		dvd = new DigitalVideoDisc(oldTitle, "animation", 0.0f);
 	}
 
 	private static void swap(Media obj1, Media obj2) {
@@ -35,6 +35,7 @@ public class TessPassingParameter {
 		int length = ((DigitalVideoDisc) obj1).getLength();
 		float cost = obj1.getCost();
 		
+		/*
 		obj1.setTitle(obj2.getTitle()); 
 		obj1.setCategory(obj2.getCategory());
 		((DigitalVideoDisc) obj1).setDirector(((DigitalVideoDisc) obj2).getDirector());
@@ -46,7 +47,7 @@ public class TessPassingParameter {
 		((DigitalVideoDisc) obj2).setDirector(director);
 		obj2.setCost(cost);
 		((DigitalVideoDisc) obj2).setLength(length);
-		
+		*/
 	}
 }
 

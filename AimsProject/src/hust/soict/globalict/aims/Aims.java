@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import hust.soict.globalict.aims.media.Book;
+import hust.soict.globalict.aims.media.CompactDisc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.Track;
 import hust.soict.globalict.aims.order.Order;
 
 /**
@@ -13,36 +15,12 @@ import hust.soict.globalict.aims.order.Order;
 public class Aims {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//		Order anOrder = Order.createOrder();
-//		Media dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 8, 19.95f);
-//
-//		Media dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 124, 24.95f);
-//
-//		Media dvd3 = new DigitalVideoDisc("Alladin", "Animation", "John Musker", 90, 18.99f);
-//
-//		Media dvd4 = new DigitalVideoDisc("My life", "Commedy", "Nguyen Thi Hong Anh", 1000, 0.01f);
-//
-//		Media dvd5 = new DigitalVideoDisc("Spirited Away", "Animation", "Hayao Miyazaki", 90, 15.5f);
-//
-//		Media dvd6 = new DigitalVideoDisc("Howl's Moving Castle", "Animation", "Hayao Miyazaki", 95, 13.75f);
-//
-//		Media dvd7 = new DigitalVideoDisc("Princess Mononoke", "Animation", "Hayao Miyazaki", 85, 15.0f);
-//
-//		Media dvd8 = new DigitalVideoDisc("Ponyo", "Animation", "Hayao Miyazaki", 80, 11.25f);
-//
-//		Media dvd9 = new DigitalVideoDisc("Laputa Castle in the sky", "Animation", "Hayao Miyazaki", 100, 13.25f);
-//
-//		Media dvd10 = new DigitalVideoDisc("The cat returns", "Animation", "Hayao Miyazaki", 80, 10.25f);
-//
-//		Media dvd11 = new DigitalVideoDisc("Kiki's Delivery service", "Animation", "Hayao Miyazaki", 85, 11.25f);
-//
-//		Media[] ghibliList = { dvd5, dvd6, dvd7, dvd8, dvd9, dvd10, dvd11 };
-		
 		new Aims().showMenu();
 	}
+	
+	
+	
 
-	@SuppressWarnings("null")
 	public void showMenu() {
 		ArrayList<Order> orderList = new ArrayList<Order>();
 		Scanner sc = new Scanner(System.in);
@@ -59,10 +37,9 @@ public class Aims {
 		do {
 			System.out.print(menu);
 			choice = sc.nextLine();
-			//choice = Integer.parseInt(tmp);
 			String media, title, category, costS;
 			float cost;
-			switch (choice) {
+			switch (choice.trim()) {
 			case "1":
 				Order order = Order.createOrder();
 				orderList.add(order);
@@ -72,7 +49,7 @@ public class Aims {
 					System.out.println("No order has been created!");
 					break;
 				}
-				System.out.print("Choose media type (Book or Digital video disc): ");
+				System.out.print("Choose media type (Book or Digital video disc or Compact disc): ");
 				media = sc.nextLine();
 				System.out.print("Title: ");
 				title = sc.nextLine();
@@ -82,12 +59,54 @@ public class Aims {
 				costS = sc.nextLine();
 				cost = Float.parseFloat(costS);
 				media = media.toLowerCase().trim();
+				
+				String agree = "yes";
+				
 				if(media.equals("book")) {
-					orderList.get(orderList.size() - 1).addMedia(Book.createMedia(title.trim(), category.trim(), cost));
+					Book b = new Book (title.trim(), category.trim(), cost);
+					orderList.get(orderList.size() - 1).addMedia(b);
 				}
-				else if(media.contentEquals("digital video disc")) {
-					orderList.get(orderList.size() - 1).addMedia(DigitalVideoDisc.createMedia(title.trim(), category.trim(), cost));
+				else if(media.equals("digital video disc")) {
+					System.out.print("Director: ");
+					String dvdDirector = sc.nextLine().trim();
+					System.out.print("Length: ");
+					int dvdLength = Integer.parseInt(sc.nextLine());
+					DigitalVideoDisc dvd = new DigitalVideoDisc (title.trim(), category.trim(), dvdDirector, dvdLength,  cost);
+					orderList.get(orderList.size() - 1).addMedia(dvd);
+					System.out.println("*******");
+					System.out.print("Do you want to play the DVD (yes/no)? ");
+					agree = sc.nextLine().toLowerCase().trim();
+					System.out.println("*******");
+					if(agree.equals("yes") || agree.equals("y")) {
+						dvd.play();
+					}
 				}
+				else if(media.equals("compact disc")) {
+					CompactDisc cd = new CompactDisc(title.trim(), category.trim(), cost);
+					orderList.get(orderList.size() - 1).addMedia(cd);
+					String addTrack = "\nDo you want to add track to this CD (yes/no) ?";
+					agree = "yes";
+					do {
+						System.out.print(addTrack);
+						agree = sc.nextLine().toLowerCase().trim();
+						if(agree.equals("yes") || agree.equals("y")) {
+							System.out.print("Track's title: ");
+							String trackTitle = sc.nextLine();
+							System.out.print("Track's length: ");
+							int trackLength = Integer.parseInt(sc.nextLine());
+							cd.addTrack(new Track(trackTitle, trackLength));
+						}
+					}while(agree.equals("yes") || agree.contentEquals("y"));
+					System.out.println("*******");
+					System.out.print("Do you want to play the CD (yes/no) ?");
+					agree = sc.nextLine();
+					System.out.println("*******");
+					if(agree.equals("yes") || agree.equals("y")) {
+						cd.play();
+					}
+				}
+				
+				
 				break;
 			case "3":
 				if(orderList.size() == 0) {

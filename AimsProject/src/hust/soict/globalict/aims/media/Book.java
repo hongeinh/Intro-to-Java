@@ -7,6 +7,24 @@ public class Book extends Media {
 
 	protected List<String> authors = new ArrayList<String>();
 
+	public Book(String title) {
+		super(title);
+	}
+	public Book(String title, String category) {
+		super(title, category);
+	}
+	public Book(String title, String category, float cost) {
+		super(title, category, cost);
+	}
+	
+	public Book(String title, String category, List<String> authors) {
+		super(title, category);
+		int sz = authors.size();
+		for(int i = 0; i < sz; i++) {
+			addAuthor(authors.get(i));
+		}
+	}
+	
 	public int findAuthor(String authorName) {
 		int isFound = -1;
 		String temp = authorName.toLowerCase();
@@ -20,28 +38,6 @@ public class Book extends Media {
 		return isFound;
 	}
 
-	Book(String title) {
-		super(title);
-	}
-	Book(String title, String category) {
-		super(title, category);
-	}
-	Book(String title, String category, float cost) {
-		super(title, category, cost);
-	}
-	
-	Book(String title, String category, List<String> authors) {
-		super(title, category);
-		int sz = authors.size();
-		for(int i = 0; i < sz; i++) {
-			addAuthor(authors.get(i));
-		}
-	}
-	
-	
-	public static Media createMedia(String title, String category, float cost) {
-		return new Book(title, category, cost);
-	}
 	public void addAuthor(String authorName) {
 		int isFound = findAuthor(authorName);
 		if (isFound == -1) {

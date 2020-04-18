@@ -1,6 +1,6 @@
 package hust.soict.globalict.aims.media;
 
-public class Media {
+public abstract class Media {
 	private static int nbMediaUsed = 0;
 	private String title;
 	private String category;
@@ -9,20 +9,11 @@ public class Media {
 	public String getTitle() {
 		return title;
 	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
 	public String getCategory() {
 		return category;
 	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
 	public float getCost() {
 		return cost;
-	}
-	public void setCost(float cost) {
-		this.cost = cost;
 	}
 	public void setMediaId(String mediaId) {
 		this.mediaId = mediaId;
@@ -30,21 +21,17 @@ public class Media {
 	public String getMediaId() {
 		return mediaId;
 	}
-	Media(String title) {
+	public Media(String title) {
 		this.title = title;
 		nbMediaUsed++;
 		setMediaId("MDI" + Integer.toString(nbMediaUsed));
 	}
-	Media(String title, String category) {
+	public Media(String title, String category) {
 		this(title);
 		this.category = category;
 	}
-	Media(String title, String category, float cost) {
+	public Media(String title, String category, float cost) {
 		this(title, category);
 		this.cost = cost;
-	}
-	
-	public static Media createMedia(String title, String category, float cost) {
-		return new Media(title, category, cost);
 	}
 }

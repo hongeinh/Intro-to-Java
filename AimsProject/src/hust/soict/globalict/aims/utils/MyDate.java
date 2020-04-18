@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class MyDate {
 	private int day;
-	private int stringMonth;
+	private int month;
 	private int year;
 
 	public int getDay() {
@@ -16,11 +16,11 @@ public class MyDate {
 	}
 
 	public int getMonth() {
-		return stringMonth;
+		return month;
 	}
 
 	public void setMonth(int month) {
-		this.stringMonth = month;
+		this.month = month;
 	}
 
 	public int getYear() {

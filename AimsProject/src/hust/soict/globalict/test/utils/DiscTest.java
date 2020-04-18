@@ -11,41 +11,41 @@ public class DiscTest {
 
 	public static void main(String[] args) {
 		Order anOrder = Order.createOrder();
-		DigitalVideoDisc dvd1 = (DigitalVideoDisc) DigitalVideoDisc.createMedia("The Lion King", "Animation", 19.95f);
+		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", 19.95f);
 		dvd1.setDirector("Roger Allers");
 		dvd1.setLength(8);
-		DigitalVideoDisc dvd2 = (DigitalVideoDisc) DigitalVideoDisc.createMedia("Star Wars", "Science Fiction", 24.95f);
+		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", 24.95f);
 		dvd2.setDirector("George Lucas");
 		dvd2.setLength(124);
-		DigitalVideoDisc dvd3 = (DigitalVideoDisc) DigitalVideoDisc.createMedia("Alladin", "Animation", 18.99f);
+		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Alladin", "Animation", 18.99f);
 		dvd3.setDirector("John Musker");
 		dvd3.setLength(8);
-		DigitalVideoDisc dvd4 = (DigitalVideoDisc) DigitalVideoDisc.createMedia("My life", "Commedy", 0.01f);
+		DigitalVideoDisc dvd4 = new DigitalVideoDisc("My life", "Commedy", 0.01f);
 		dvd4.setDirector("Nguyen Thi Hong Anh");
 		dvd4.setLength(1000);
-		DigitalVideoDisc dvd5 = (DigitalVideoDisc) DigitalVideoDisc.createMedia("Spirited Away", "Animation", 15.5f);
+		DigitalVideoDisc dvd5 = new DigitalVideoDisc("Spirited Away", "Animation", 15.5f);
 		dvd5.setDirector("Hayao Miyazaki");
 		dvd5.setLength(90);
-		DigitalVideoDisc dvd6 = (DigitalVideoDisc) DigitalVideoDisc.createMedia("Howl's Moving Castle", "Animation",
+		DigitalVideoDisc dvd6 = new DigitalVideoDisc("Howl's Moving Castle", "Animation",
 				13.75f);
 		dvd6.setDirector("Hayao Miyazaki");
 		dvd6.setLength(95);
-		DigitalVideoDisc dvd7 = (DigitalVideoDisc) DigitalVideoDisc.createMedia("Princess Mononoke", "Animation",
+		DigitalVideoDisc dvd7 = new DigitalVideoDisc("Princess Mononoke", "Animation",
 				15.0f);
 		dvd7.setDirector("Hayao Miyazaki");
 		dvd7.setLength(85);
-		DigitalVideoDisc dvd8 = (DigitalVideoDisc) DigitalVideoDisc.createMedia("Ponyo", "Animation", 11.25f);
+		DigitalVideoDisc dvd8 = new DigitalVideoDisc("Ponyo", "Animation", 11.25f);
 		dvd8.setDirector("Hayao Miyazaki");
 		dvd8.setLength(80);
-		DigitalVideoDisc dvd9 = (DigitalVideoDisc) DigitalVideoDisc.createMedia("Laputa Castle in the sky", "Animation",
+		DigitalVideoDisc dvd9 = new DigitalVideoDisc("Laputa Castle in the sky", "Animation",
 				13.25f);
 		dvd9.setDirector("Hayao Miyazaki");
 		dvd9.setLength(100);
-		DigitalVideoDisc dvd10 = (DigitalVideoDisc) DigitalVideoDisc.createMedia("The cat returns", "Animation",
+		DigitalVideoDisc dvd10 = new DigitalVideoDisc("The cat returns", "Animation",
 				10.25f);
 		dvd10.setDirector("Hayao Miyazaki");
 		dvd10.setLength(80);
-		DigitalVideoDisc dvd11 = (DigitalVideoDisc) DigitalVideoDisc.createMedia("Kiki's Delivery service", "Animation",
+		DigitalVideoDisc dvd11 = new DigitalVideoDisc("Kiki's Delivery service", "Animation",
 				11.25f);
 		dvd11.setDirector("Hayao Miyazaki");
 		dvd11.setLength(85);

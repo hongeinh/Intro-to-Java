@@ -1,11 +1,12 @@
 package hust.soict.globalict.aims.media;
 
+import hust.soict.globalict.aims.playable.Playable;
+
 /**
  * @author Nguyen Thi Hong Anh
  * */
-public class DigitalVideoDisc extends Media{
+public class DigitalVideoDisc extends Disc implements Playable{
 	private String director;
-	private int length;
 	public String getDirector() {
 		return director;
 	}
@@ -19,17 +20,16 @@ public class DigitalVideoDisc extends Media{
 		this.length = length;
 	}
 	
-	DigitalVideoDisc(String title, String category, String director ){
+	public DigitalVideoDisc(String title, String category, String director ){
 		super(title, category);
 		this.director = director;
 	}
-	DigitalVideoDisc(String title, String category, float cost) {
+	public DigitalVideoDisc(String title, String category, float cost) {
 		super(title, category, cost);
 	}
-	DigitalVideoDisc(String title, String category, String director, int length, float cost){
-		this(title, category, cost);
+	public DigitalVideoDisc(String title, String category, String director, int length, float cost){
+		super(title, category, length, cost);
 		this.director = director;
-		this.length = length;
 	}
 
 	/**
@@ -50,8 +50,10 @@ public class DigitalVideoDisc extends Media{
 		}
 		return isFound;
 	}
-	
-	public static Media createMedia(String title, String category, float cost) {
-		return new DigitalVideoDisc(title, category, cost);
+	@Override
+	public void play() {
+		System.out.println("Playing DVD: " + this.getTitle());
+		System.out.println("DVD length: " + this.getLength());
+		
 	}
 }
