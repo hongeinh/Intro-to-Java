@@ -8,6 +8,7 @@ import hust.soict.globalict.aims.media.CompactDisc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Track;
 import hust.soict.globalict.aims.order.Order;
+import hust.soict.globalict.aims.thread.MemoryDaemon;
 
 /**
  * @author Nguyen Thi Hong Anh
@@ -15,6 +16,10 @@ import hust.soict.globalict.aims.order.Order;
 public class Aims {
 
 	public static void main(String[] args) {
+		MemoryDaemon md = new MemoryDaemon();
+		Thread thread = new Thread(md);
+		thread.setDaemon(true);
+		thread.start();
 		new Aims().showMenu();
 	}
 	
@@ -79,6 +84,8 @@ public class Aims {
 					System.out.println("*******");
 					if(agree.equals("yes") || agree.equals("y")) {
 						dvd.play();
+					} else if ( (!agree.equals("yes") ) && (!agree.equals("y")) && (!agree.equals("no") ) && (!agree.equals("n")) ) {
+						System.out.println("Invalid choice");
 					}
 				}
 				else if(media.equals("compact disc")) {
@@ -103,7 +110,11 @@ public class Aims {
 					System.out.println("*******");
 					if(agree.equals("yes") || agree.equals("y")) {
 						cd.play();
+					} else if ( (!agree.equals("yes") ) && (!agree.equals("y")) && (!agree.equals("no") ) && (!agree.equals("n")) ) {
+						System.out.println("Invalid choice");
 					}
+				} else {
+					System.out.println("Invalid media!");
 				}
 				
 				

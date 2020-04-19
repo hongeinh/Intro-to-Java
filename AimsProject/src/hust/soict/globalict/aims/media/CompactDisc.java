@@ -6,8 +6,9 @@ import hust.soict.globalict.aims.playable.Playable;
 
 public class CompactDisc extends Disc implements Playable {
 	private String artist;
-	//private int length;
 	private ArrayList<Track> tracks = new ArrayList<Track>();
+	
+	
 	public CompactDisc(String title) {
 		super(title);
 	}
@@ -27,6 +28,8 @@ public class CompactDisc extends Disc implements Playable {
 	public String getArtist() {
 		return artist;
 	}
+	
+	
 	
 	public int findTrack(Track t) {
 		int sz = tracks.size();
