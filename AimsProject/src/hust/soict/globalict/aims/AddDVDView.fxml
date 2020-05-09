@@ -31,6 +31,6 @@
       <Label layoutX="72.0" layoutY="266.0" text="Director" />
       <TextField fx:id="dvdDirectorTextField" layoutX="156.0" layoutY="261.0" prefHeight="31.0" prefWidth="277.0" />
       <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="60.0" layoutY="322.0" prefHeight="31.0" prefWidth="257.0" text="status" textFill="#d91111" />
-      <Button fx:id="backToMenuButton" layoutY="-1.0" mnemonicParsing="false" text="Back to menu" />
+      
    </children>
 </AnchorPane>

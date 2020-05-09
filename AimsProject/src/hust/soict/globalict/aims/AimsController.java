@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import hust.soict.globalict.aims.media.Book;
 import hust.soict.globalict.aims.order.Order;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,11 +27,11 @@ import javafx.stage.Stage;
 public class AimsController implements Initializable {
 
 	ArrayList<Order> orderList;
-	
+
 	// Aims.fxml
-	@FXML 
+	@FXML
 	private MenuBar menubar;
-	
+
 	@FXML
 	private AnchorPane parentPane;
 
@@ -81,9 +82,6 @@ public class AimsController implements Initializable {
 	@FXML
 	private TableView displayTable;
 
-	
-
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -129,31 +127,49 @@ public class AimsController implements Initializable {
 
 	@FXML
 	public void addBookController() throws IOException {
-		if(orderList.size() == 0) {
+		if (orderList.size() == 0) {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Alert");
 			alert.setHeaderText("No order created");
 			alert.setContentText("Can not add media");
+			alert.showAndWait();
 		} else {
-			System.out.println("Add book controller clicked");
+			System.out.println("Open Book controller clicked");
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("AddBookView.fxml"));
 			Parent addBookView = loader.load();
 			Scene bookScene = new Scene(addBookView);
+
 			Stage stage = (Stage) menubar.getScene().getWindow();
-			System.out.println("Root stage gotten");
-			stage.setScene(bookScene);
-			stage.show();
+			// System.out.println("Root stage gotten");
+			Stage newstage = new Stage();
+			newstage.initOwner(stage);
+
+			System.out.println("Create new stage");
+			newstage.setScene(bookScene);
+			newstage.showAndWait();
+			AddBookMenuItemController bookController = loader.getController();
+			System.out.println("\n\nGot controller");
+			ArrayList<Book> books = bookController.getBooks();
+			int sz = books.size();
+			if (sz != 0) {
+				Order order = orderList.get(orderList.size() - 1);
+				for (int i = 0; i < sz; i++) {
+					int success = order.addMedia(books.get(i));
+					System.out.println(success);
+				}
+			}
 		}
 	}
 
 	@FXML
 	public void addCDController(ActionEvent event) {
 		try {
-			if(orderList.size() == 0) {
+			if (orderList.size() == 0) {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Alert");
 				alert.setHeaderText("No order created");
 				alert.setContentText("Can not add media");
+				alert.showAndWait();
 			} else {
 				System.out.println("Add cd controller clicked");
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("AddCDView.fxml"));
@@ -173,11 +189,12 @@ public class AimsController implements Initializable {
 	@FXML
 	public void addDVDController(ActionEvent event) {
 		try {
-			if(orderList.size() == 0) {
+			if (orderList.size() == 0) {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Alert");
 				alert.setHeaderText("No order created");
 				alert.setContentText("Can not add media");
+				alert.showAndWait();
 			} else {
 				System.out.println("Add dvd controller clicked");
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("AddDVDView.fxml"));
@@ -195,14 +212,31 @@ public class AimsController implements Initializable {
 	}
 
 	public void removeMediaController() {
-		statusRemoveMediaLabel.setVisible(true);
-		removeMediaTextField.setVisible(true);
-		removeMediaButton.setVisible(true);
-		mediaIDLabel.setVisible(true);
-		removeMediaTextField.setEditable(true);
+		if (orderList.size() == 0) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Alert");
+			alert.setHeaderText("No order created");
+			alert.setContentText("Can not add media");
+			alert.showAndWait();
+		} else {
+			statusRemoveMediaLabel.setVisible(true);
+			removeMediaTextField.setVisible(true);
+			removeMediaButton.setVisible(true);
+			mediaIDLabel.setVisible(true);
+			removeMediaTextField.setEditable(true);
+		}
 	}
 
 	public void displayOrderController() {
+		if (orderList.size() == 0) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Alert");
+			alert.setHeaderText("No order created");
+			alert.setContentText("Can not add media");
+			alert.showAndWait();
+		} else {
+
+		}
 	}
 
 	public void setRemoveVisibilityFalse() {
@@ -211,8 +245,7 @@ public class AimsController implements Initializable {
 		removeMediaButton.setVisible(false);
 		mediaIDLabel.setVisible(false);
 	}
-	
-	
+
 	/*
 	 * public void backToMenu(ActionEvent event) { try {
 	 * System.out.println("Back to main menu"); FXMLLoader loader = new

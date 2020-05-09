@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="parentPane" prefHeight="463.0" prefWidth="554.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hust.soict.globalict.aims.AimsController">
+<AnchorPane fx:id="parentPane" prefHeight="606.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hust.soict.globalict.aims.AimsController">
    <children>
       <MenuBar fx:id="menubar" layoutY="-2.0">
         <menus>
@@ -33,7 +33,7 @@
             </Menu>
         </menus>
       </MenuBar>
-      <TableView fx:id="displayTable" layoutY="134.0" prefHeight="329.0" prefWidth="554.0">
+      <TableView fx:id="displayTable" layoutY="193.0" prefHeight="415.0" prefWidth="565.0">
         <columns>
           <TableColumn prefWidth="70.0" text="ID" />
           <TableColumn prefWidth="212.0" text="Title" />
@@ -41,13 +41,13 @@
             <TableColumn prefWidth="96.0" text="Cost" />
         </columns>
       </TableView>
-      <Label fx:id="orderLabel" layoutX="7.0" layoutY="97.0" prefHeight="21.0" prefWidth="48.0" text="Order" />
-      <TextField fx:id="orderTextField" layoutX="62.0" layoutY="92.0" prefHeight="31.0" prefWidth="39.0" />
-      <TextField fx:id="dateTextField" layoutX="357.0" layoutY="92.0" />
-      <Label fx:id="dateLabel" layoutX="259.0" layoutY="97.0" text="Date created" />
-      <TextField fx:id="removeMediaTextField" layoutX="107.0" layoutY="46.0" />
-      <Label fx:id="mediaIDLabel" layoutX="25.0" layoutY="51.0" text="Media ID" />
-      <Button fx:id="removeMediaButton" layoutX="312.0" layoutY="46.0" mnemonicParsing="false" text="Remove" />
-      <Label fx:id="statusRemoveMediaLabel" layoutX="400.0" layoutY="51.0" text="status" />
+      <Label fx:id="orderLabel" layoutX="8.0" layoutY="166.0" prefHeight="21.0" prefWidth="48.0" text="Order" />
+      <TextField fx:id="orderTextField" layoutX="56.0" layoutY="161.0" prefHeight="31.0" prefWidth="39.0" />
+      <TextField fx:id="dateTextField" layoutX="378.0" layoutY="161.0" />
+      <Label fx:id="dateLabel" layoutX="283.0" layoutY="166.0" text="Date created" />
+      <TextField fx:id="removeMediaTextField" layoutX="89.0" layoutY="108.0" />
+      <Label fx:id="mediaIDLabel" layoutX="14.0" layoutY="113.0" text="Media ID" />
+      <Button fx:id="removeMediaButton" layoutX="289.0" layoutY="108.0" mnemonicParsing="false" text="Remove" />
+      <Label fx:id="statusRemoveMediaLabel" layoutX="382.0" layoutY="108.0" prefHeight="32.0" prefWidth="180.0" text="status" />
    </children>
 </AnchorPane>
