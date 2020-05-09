@@ -266,11 +266,11 @@ public class MyDate {
 	}
 
 	// print current date
-	public void print(int day, int month, int year) {
-		System.out.println(monthToString(month) + " " + day + "th " + year);
+	public String print(int day, int month, int year) {
+		return monthToString(month) + " " + day + "th " + year;
 	}
 
-	public void print() {
-		System.out.println(this.getDay() + "/" + this.getMonth() + "/" + this.getYear());
+	public String print() {
+		return this.getDay() + "/" + this.getMonth() + "/" + this.getYear();
 	}
 }

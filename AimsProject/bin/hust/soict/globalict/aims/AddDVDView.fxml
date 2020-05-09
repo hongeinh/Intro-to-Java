@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="525.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="127.0" prefHeight="47.0" prefWidth="381.0" text="ADD DIGITAL VIDEO DISC">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="93.0" layoutY="66.0" text="Title" />
+      <Label layoutX="67.0" layoutY="112.0" text="Category" />
+      <Label layoutX="87.0" layoutY="162.0" text="Cost" />
+      <Label layoutX="5.0" layoutY="382.0" text="Do you want to play the DVD ?" />
+      <Label layoutX="235.0" layoutY="382.0" prefHeight="21.0" prefWidth="35.0" text="Title" />
+      <Label layoutX="229.0" layoutY="435.0" text="Length" />
+      <TextField fx:id="dvdTitleTextField" layoutX="156.0" layoutY="61.0" prefHeight="31.0" prefWidth="277.0" />
+      <TextField fx:id="dvdCategoryTextField" layoutX="156.0" layoutY="107.0" prefHeight="31.0" prefWidth="277.0" />
+      <TextField fx:id="dvdCostTextField" layoutX="156.0" layoutY="157.0" prefHeight="31.0" prefWidth="277.0" />
+      <Button fx:id="playDVDButton" layoutX="75.0" layoutY="420.0" mnemonicParsing="false" text="Play" />
+      <Button fx:id="addDVDButton" layoutX="326.0" layoutY="322.0" mnemonicParsing="false" text="Add DVD" />
+      <TextField fx:id="dvdPlayTitleTextField" layoutX="294.0" layoutY="377.0" />
+      <TextField fx:id="dvdPlayLengthTextField" layoutX="294.0" layoutY="430.0" />
+      <TextField fx:id="dvdLengthTextField" layoutX="156.0" layoutY="208.0" prefHeight="31.0" prefWidth="277.0" />
+      <Label layoutX="76.0" layoutY="213.0" text="Length" />
+      <Label layoutX="72.0" layoutY="266.0" text="Director" />
+      <TextField fx:id="dvdDirectorTextField" layoutX="156.0" layoutY="261.0" prefHeight="31.0" prefWidth="277.0" />
+      <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="60.0" layoutY="322.0" prefHeight="31.0" prefWidth="257.0" text="status" textFill="#d91111" />
+      <Button fx:id="backToMenuButton" layoutY="-1.0" mnemonicParsing="false" text="Back to menu" />
+   </children>
+</AnchorPane>

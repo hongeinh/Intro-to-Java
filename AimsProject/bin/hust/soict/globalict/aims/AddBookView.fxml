@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="427.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutX="110.0" layoutY="21.0" prefHeight="35.0" prefWidth="305.0" text="ADD BOOK" textAlignment="JUSTIFY">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="75.0" layoutY="80.0" prefHeight="0.0" prefWidth="35.0" text="Title" />
+      <Label layoutX="75.0" layoutY="137.0" text="Category" />
+      <Label layoutX="75.0" layoutY="193.0" text="Author" />
+      <Label layoutX="75.0" layoutY="251.0" text="Cost" />
+      <TextField fx:id="bookTitleTextField" layoutX="160.0" layoutY="75.0" />
+      <TextField fx:id="bookCategoryTextField" layoutX="160.0" layoutY="132.0" />
+      <TextField fx:id="bookAuthorTextField" layoutX="160.0" layoutY="188.0" />
+      <TextField fx:id="bookCostTextField" layoutX="160.0" layoutY="246.0" />
+      <Label fx:id="statusLabel" alignment="CENTER" layoutX="78.0" layoutY="362.0" prefHeight="31.0" prefWidth="358.0" text="STATUS" textFill="#ee0f3c" />
+      <Button fx:id="addAuthorButton" layoutX="393.0" layoutY="188.0" mnemonicParsing="false" text="Add author" />
+      <Button fx:id="addBookButton" layoutX="214.0" layoutY="317.0" mnemonicParsing="false" text="Add Book" />
+      <Button fx:id="backToMenuButton" layoutY="-1.0" mnemonicParsing="false" text="Back to menu" />
+   </children>
+</AnchorPane>

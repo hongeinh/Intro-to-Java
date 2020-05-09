@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="parentPane" prefHeight="463.0" prefWidth="554.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hust.soict.globalict.aims.AimsController">
+   <children>
+      <MenuBar fx:id="menubar" layoutY="-2.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Create Order">
+            <items>
+              <MenuItem fx:id="createOrderMenuItem" mnemonicParsing="false" onAction="#createOrderController" text="Create Order" />
+            </items>
+          </Menu>
+          <Menu fx:id="addMediaMenu" mnemonicParsing="false" text="Add Media">
+            <items>
+              <MenuItem fx:id="addBookMenuItem" mnemonicParsing="false" onAction="#addBookController" text="Add Book" />
+                  <MenuItem fx:id="addDVDMenuItem" mnemonicParsing="false" onAction="#addDVDController" text="Add DVD" />
+                  <MenuItem fx:id="addCDMenuItem" mnemonicParsing="false" onAction="#addCDController" text="Add CD" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Remove Media">
+            <items>
+              <MenuItem fx:id="removeMediaMenuItem" mnemonicParsing="false" onAction="#removeMediaController" text="Remove Media" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Display Order">
+               <items>
+                  <MenuItem fx:id="displayOrderMenuItem" mnemonicParsing="false" onAction="#displayOrderController" text="Display Order" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <TableView fx:id="displayTable" layoutY="134.0" prefHeight="329.0" prefWidth="554.0">
+        <columns>
+          <TableColumn prefWidth="70.0" text="ID" />
+          <TableColumn prefWidth="212.0" text="Title" />
+            <TableColumn minWidth="0.0" prefWidth="175.0" text="Category" />
+            <TableColumn prefWidth="96.0" text="Cost" />
+        </columns>
+      </TableView>
+      <Label fx:id="orderLabel" layoutX="7.0" layoutY="97.0" prefHeight="21.0" prefWidth="48.0" text="Order" />
+      <TextField fx:id="orderTextField" layoutX="62.0" layoutY="92.0" prefHeight="31.0" prefWidth="39.0" />
+      <TextField fx:id="dateTextField" layoutX="357.0" layoutY="92.0" />
+      <Label fx:id="dateLabel" layoutX="259.0" layoutY="97.0" text="Date created" />
+      <TextField fx:id="removeMediaTextField" layoutX="107.0" layoutY="46.0" />
+      <Label fx:id="mediaIDLabel" layoutX="25.0" layoutY="51.0" text="Media ID" />
+      <Button fx:id="removeMediaButton" layoutX="312.0" layoutY="46.0" mnemonicParsing="false" text="Remove" />
+      <Label fx:id="statusRemoveMediaLabel" layoutX="400.0" layoutY="51.0" text="status" />
+   </children>
+</AnchorPane>
