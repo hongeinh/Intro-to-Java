@@ -36,6 +36,7 @@ public class Order {
 	}
 
 	public ArrayList<Media> getItemsOrdered() {
+		groupAndSort();
 		return itemsOrdered;
 	}
 

@@ -35,10 +35,10 @@
       </MenuBar>
       <TableView fx:id="displayTable" layoutY="193.0" prefHeight="415.0" prefWidth="565.0">
         <columns>
-          <TableColumn prefWidth="70.0" text="ID" />
-          <TableColumn prefWidth="212.0" text="Title" />
-            <TableColumn minWidth="0.0" prefWidth="175.0" text="Category" />
-            <TableColumn prefWidth="96.0" text="Cost" />
+          <TableColumn fx:id="idTableColumn" prefWidth="70.0" text="ID" />
+          <TableColumn fx:id="titleTableColumn" prefWidth="212.0" text="Title" />
+            <TableColumn fx:id="categoryTableColumn" minWidth="0.0" prefWidth="175.0" text="Category" />
+            <TableColumn fx:id="costTableColumn" prefWidth="96.0" text="Cost" />
         </columns>
       </TableView>
       <Label fx:id="orderLabel" layoutX="8.0" layoutY="166.0" prefHeight="21.0" prefWidth="48.0" text="Order" />
@@ -48,6 +48,6 @@
       <TextField fx:id="removeMediaTextField" layoutX="89.0" layoutY="108.0" />
       <Label fx:id="mediaIDLabel" layoutX="14.0" layoutY="113.0" text="Media ID" />
       <Button fx:id="removeMediaButton" layoutX="289.0" layoutY="108.0" mnemonicParsing="false" text="Remove" />
-      <Label fx:id="statusRemoveMediaLabel" layoutX="382.0" layoutY="108.0" prefHeight="32.0" prefWidth="180.0" text="status" />
+      <Label fx:id="statusLabel" layoutX="111.0" layoutY="59.0" prefHeight="32.0" prefWidth="348.0" text="status" textFill="#f20404" />
    </children>
 </AnchorPane>

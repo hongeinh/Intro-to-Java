@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="615.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="615.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hust.soict.globalict.aims.AddCDMenuItemController">
    <children>
       <Label layoutX="175.0" layoutY="27.0" text="ADD COMPACT DISC">
          <font>
@@ -16,24 +16,27 @@
       <Label layoutX="29.0" layoutY="77.0" text="Title" />
       <Label layoutX="14.0" layoutY="128.0" text="Category" />
       <Label layoutX="29.0" layoutY="181.0" text="Cost" />
-      <Label layoutX="347.0" layoutY="77.0" text="Title" />
-      <Label layoutX="330.0" layoutY="128.0" text="Length" />
+      <Label fx:id="trackTitleLabel" layoutX="347.0" layoutY="77.0" text="Title" />
+      <Label fx:id="trackLengthLabel" layoutX="330.0" layoutY="128.0" text="Length" />
       <TextField fx:id="cdTitleTextField" layoutX="82.0" layoutY="72.0" />
       <TextField fx:id="cdCategoryTextField" layoutX="82.0" layoutY="123.0" />
       <TextField fx:id="cdCostTextField" layoutX="82.0" layoutY="176.0" />
-      <TextField fx:id="trackTtileTextField" layoutX="392.0" layoutY="72.0" />
+      <TextField fx:id="trackTitleTextField" layoutX="392.0" layoutY="72.0" />
       <TextField fx:id="trackLengthTextField" layoutX="392.0" layoutY="123.0" />
-      <Button fx:id="addCDButton" layoutX="139.0" layoutY="236.0" mnemonicParsing="false" text="Add CD" />
-      <Button fx:id="addTrackButton" layoutX="447.0" layoutY="176.0" mnemonicParsing="false" text="Add track" />
-      <Label layoutX="354.0" layoutY="241.0" text="CD's length" />
-      <TextField fx:id="cdLengthTextField" layoutX="447.0" layoutY="236.0" prefHeight="21.0" prefWidth="65.0" />
-      <TableView layoutX="69.0" layoutY="354.0" prefHeight="247.0" prefWidth="465.0">
+      <Button fx:id="addCDButton" layoutX="82.0" layoutY="236.0" mnemonicParsing="false" onAction="#addCD" text="Add CD" />
+      <Button fx:id="addTrackButton" layoutX="447.0" layoutY="176.0" mnemonicParsing="false" onAction="#addTrack" text="Add track" />
+      <Label layoutX="395.0" layoutY="321.0" prefHeight="21.0" prefWidth="84.0" text="CD's length" />
+      <TextField fx:id="cdLengthTextField" layoutX="499.0" layoutY="316.0" prefHeight="21.0" prefWidth="65.0" />
+      <TableView fx:id="trackPlayTableView" layoutX="69.0" layoutY="354.0" prefHeight="247.0" prefWidth="465.0">
         <columns>
-          <TableColumn fx:id="trackPlayTable" prefWidth="294.0" text="TITLE" />
-          <TableColumn minWidth="0.0" prefWidth="170.0" text="LENGTH" />
+          <TableColumn fx:id="trackTitleTableColumn" prefWidth="294.0" text="TITLE" />
+          <TableColumn fx:id="trackLengthTableColumn" minWidth="0.0" prefWidth="170.0" text="LENGTH" />
         </columns>
       </TableView>
-      <Button fx:id="playCDButton" layoutX="265.0" layoutY="308.0" mnemonicParsing="false" text="Play CD" />
+      <Button fx:id="playCDButton" layoutX="170.0" layoutY="236.0" mnemonicParsing="false" onAction="#playCD" text="Play CD" />
+      <Label fx:id="statusLabel" layoutX="287.0" layoutY="236.0" prefHeight="31.0" prefWidth="300.0" text="Status" textFill="#f80000" />
+      <Label fx:id="cdCurrentTitle" layoutX="33.0" layoutY="321.0" text="CD Title" />
+      <TextField fx:id="cdCurrentTitleTextField" layoutX="112.0" layoutY="316.0" prefHeight="21.0" prefWidth="227.0" />
       
    </children>
 </AnchorPane>

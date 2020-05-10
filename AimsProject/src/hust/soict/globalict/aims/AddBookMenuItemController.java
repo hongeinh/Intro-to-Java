@@ -70,6 +70,7 @@ public class AddBookMenuItemController {
 			String au = bookAuthorTextField.getText().trim();
 			authors.add(au);
 			statusLabel.setText("Author added");
+			bookAuthorTextField.clear();
 		}
 	}
 
@@ -87,7 +88,10 @@ public class AddBookMenuItemController {
 			System.out.println("Add title text: " + bookTitleTextField.getText());
 			System.out.println("Add category text: " + bookCategoryTextField.getText());
 			System.out.println("Add cost text: " + bookCostTextField.getText());
-			statusLabel.setText("Book of ID " + book.getMediaId() + " added successfully" );
+			statusLabel.setText("Book of ID " + book.getMediaId() + " added to temp." );
+			
+			// clear
+			bookTitleTextField.clear(); bookCategoryTextField.clear(); bookCostTextField.clear();
 		}
 		
 
